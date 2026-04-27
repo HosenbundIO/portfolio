@@ -33,7 +33,7 @@ export function ThemeToggle() {
         {resolvedTheme === "dark" ? (
           <Sparkles className="h-5 w-5 text-indigo-400 drop-shadow-[0_0_8px_rgba(129,140,248,0.8)] transition-all duration-500" />
         ) : (
-          <Moon className="h-5 w-5 text-white transition-all duration-500" />
+          <Moon className="h-5 w-5 text-foreground transition-all duration-500" />
         )}
       </div>
     </button>

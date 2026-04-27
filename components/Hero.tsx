@@ -17,7 +17,7 @@ function highlightLine(line: string): string {
       let j = i + 1;
       while (j < line.length && line[j] !== '"') j++;
       const str = line.slice(i, j + 1);
-      result += `<span style="color:#9CA3AF">${escapeHtml(str)}</span>`;
+      result += `<span style="color:#9ece6a">${escapeHtml(str)}</span>`;
       i = j + 1;
       continue;
     }
@@ -29,7 +29,7 @@ function highlightLine(line: string): string {
         line.slice(i).startsWith(kw) &&
         (i + kw.length >= line.length || !/\w/.test(line[i + kw.length]))
       ) {
-        result += `<span style="color:#6B7280">${kw}</span>`;
+        result += `<span style="color:#bb9af7">${kw}</span>`;
         i += kw.length;
         matched = true;
         break;
@@ -42,7 +42,7 @@ function highlightLine(line: string): string {
         line.slice(i).startsWith(bool) &&
         (i + bool.length >= line.length || !/\w/.test(line[i + bool.length]))
       ) {
-        result += `<span style="color:#6B7280">${bool}</span>`;
+        result += `<span style="color:#ff9e64">${bool}</span>`;
         i += bool.length;
         matched = true;
         break;
@@ -53,14 +53,14 @@ function highlightLine(line: string): string {
     const rest = line.slice(i);
     const keyMatch = rest.match(/^([a-zA-Z_]\w*)(\s*:)/);
     if (keyMatch && (i === 0 || !/\w/.test(line[i - 1]))) {
-      result += `<span style="color:#E5E7EB">${escapeHtml(keyMatch[1])}</span>`;
-      result += escapeHtml(keyMatch[2]);
+      result += `<span style="color:#7dcfff">${escapeHtml(keyMatch[1])}</span>`;
+      result += `<span style="color:#89ddff">${escapeHtml(keyMatch[2])}</span>`;
       i += keyMatch[0].length;
       continue;
     }
 
     if ("{}[]".includes(line[i])) {
-      result += `<span style="color:#4B5563">${escapeHtml(line[i])}</span>`;
+      result += `<span style="color:#89ddff">${escapeHtml(line[i])}</span>`;
       i++;
       continue;
     }
@@ -74,7 +74,7 @@ function highlightLine(line: string): string {
 
 const FLOATING_BADGES = [
   {
-    label: "✦ UI Magic",
+    label: "⚡ Full-Stack Dev",
     style: {
       top: "0px",
       right: "-8px",
@@ -82,7 +82,7 @@ const FLOATING_BADGES = [
     },
   },
   {
-    label: "✦ Clean Code",
+    label: "⬡ AI · RAG",
     style: {
       bottom: "16px",
       left: "-8px",
@@ -90,7 +90,7 @@ const FLOATING_BADGES = [
     },
   },
   {
-    label: "✦ Innovation",
+    label: "◈ Security Research",
     style: {
       bottom: "0px",
       right: "64px",
@@ -110,16 +110,16 @@ const METEORS = [
 
 const CODE_SNIPPET = `const developer = {
   name: "David",
-  role: "Full-Stack Developer",
+  role: "Developer",
   skills: [
     "React",
     "Next.js",
     "TypeScript",
     "Node.js",
     "TailwindCSS",
-    "PostgreSQL"
+    "PostgreSQL",
+    "Python"
   ],
-  motto: "Clean Code & Innovation",
   isAvailable: true
 };`;
 
@@ -155,7 +155,7 @@ export default function Hero() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-foreground" />
             </span>
             <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground">
-              Welcome to my universe
+              Available
             </span>
           </div>
 
@@ -183,7 +183,7 @@ export default function Hero() {
           <div className="h-10 flex items-center">
             <div className="inline-flex items-center bg-card border border-border px-5 py-2 rounded-full shadow-sm">
               <span className="text-sm font-mono text-foreground/90 animate-typewriter inline-block">
-                Full-Stack Developer
+                Software Developer
               </span>
             </div>
           </div>
@@ -196,11 +196,11 @@ export default function Hero() {
           {/* Pill buttons */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
             <button className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-transparent border border-foreground/60 text-foreground px-8 py-3 rounded-full font-bold text-sm transition-all hover:border-foreground hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]">
-              LEARN MORE
+              <a href="#education">LEARN MORE</a>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
             <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-foreground text-background px-8 py-3 rounded-full font-bold text-sm transition-all hover:bg-foreground/90 hover:shadow-[0_0_20px_rgba(255,255,255,0.12)]">
-              GET RESUME
+              <a href="https://docs.google.com/document/d/1t3Lrk2rT-XXhAAuV8EtXnYTOti6X2FhTmdB72T_yPEw/edit?usp=sharing">GET RESUME</a>
               <Download className="h-4 w-4" />
             </button>
           </div>
@@ -217,14 +217,14 @@ export default function Hero() {
               boxShadow: "0 0 40px rgba(255,255,255,0.05)",
             }}
           >
-            <div className="bg-card rounded-2xl overflow-hidden shadow-2xl">
-              <div className="relative flex items-center justify-center px-4 py-3 bg-background/60 border-b border-border">
+            <div className="rounded-2xl overflow-hidden shadow-2xl" style={{ background: "#1a1b26" }}>
+              <div className="relative flex items-center justify-center px-4 py-3 border-b" style={{ background: "#16161e", borderColor: "#2a2b3d" }}>
                 <div className="absolute left-4 flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
                   <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
                   <div className="w-3 h-3 rounded-full bg-[#28C840]" />
                 </div>
-                <span className="text-[11px] font-mono text-muted-foreground tracking-widest">
+                <span className="text-[11px] font-mono tracking-widest" style={{ color: "#565f89" }}>
                   developer.js
                 </span>
               </div>
@@ -236,12 +236,12 @@ export default function Hero() {
                       <div key={i} className="flex whitespace-pre">
                         <span
                           className="w-6 select-none mr-4 text-[10px] sm:text-xs shrink-0"
-                          style={{ color: "#374151" }}
+                          style={{ color: "#3b4261" }}
                         >
                           {i + 1}
                         </span>
                         <span
-                          style={{ color: "#D1D5DB" }}
+                          style={{ color: "#a9b1d6" }}
                           dangerouslySetInnerHTML={{
                             __html: highlightLine(line),
                           }}
